@@ -9,7 +9,6 @@ const Item = ({ item, onUpdateItem, onDeleteItem, onMarkAsPurchased, onEditItem 
     (parseInt(item.amountSaved) / parseInt(item.amountToSave)) * 100,
     100
   );
-
   return (
     <div className="item-container">
       <div className="item-image">
@@ -17,7 +16,7 @@ const Item = ({ item, onUpdateItem, onDeleteItem, onMarkAsPurchased, onEditItem 
       </div>
       <div className="item-details">
         <div className="item-name">{item.name}</div>
-        <div className="item-saved">{`${item.amountSaved}/${item.amountToSave}`}</div>
+        <div className="item-saved">{`$${item.amountSaved}/$${item.amountToSave}`}</div>
         <div className="progress-bar">
           <div
             className="progress-bar-fill"

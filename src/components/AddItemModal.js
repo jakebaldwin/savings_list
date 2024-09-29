@@ -11,7 +11,8 @@ const AddItemModal = ({ onClose, onSave }) => {
     const newItem = {
       id: Math.random(),
       name,
-      amountSaved: `$${amountSaved}/$${amountToSave}`,
+      amountSaved: amountSaved,
+      amountToSave: amountToSave,
       imageUrl,
     };
     onSave(newItem);

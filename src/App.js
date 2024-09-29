@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Item from './components/Item';
 import AddItemModal from './components/AddItemModal';
-import EditItemModal from './components/EditItemModal'; // Import the EditItemModal
-import { setItem, getItem } from './localStorage'; // Import local storage utility functions
+import EditItemModal from './components/EditItemModal';
+import { setItem, getItem, removeItem } from './localStorage'; 
 
 const App = () => {
   const [filter, setFilter] = useState('active');
@@ -38,13 +38,20 @@ const App = () => {
   };
 
   const deleteItem = (itemId) => {
-    setActiveItems(activeItems.filter(item => item.id !== itemId));
+    // Check if the item is in active or purchased and delete accordingly
+    if (activeItems.find(item => item.id === itemId)) {
+      setActiveItems(activeItems.filter(item => item.id !== itemId));
+    } else {
+      setPurchasedItems(purchasedItems.filter(item => item.id !== itemId));
+    }
   };
 
   const markAsPurchased = (itemId) => {
     const purchasedItem = activeItems.find(item => item.id === itemId);
-    setPurchasedItems([...purchasedItems, purchasedItem]);
-    deleteItem(itemId);
+    if (purchasedItem) {
+      setPurchasedItems([...purchasedItems, purchasedItem]);
+      deleteItem(itemId); // Remove from active items
+    }
   };
 
   const handleEditItem = (item) => {

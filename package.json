@@ -42,17 +42,20 @@
   },
   "build": {
     "appId": "com.jakebaldwin.savings_list",
+    "icon": "./public/pig.jpg",
     "mac": {
       "target": [
         "dmg",
         "zip"
       ],
-      "category": "public.app-category.utilities"
+      "category": "public.app-category.utilities",
+      "icon": "./public/pig.jpg"
     },
     "files": [
       "build/**/*",
       "public/electron.js",
-      "package.json"
+      "package.json",
+      "public/pig.jpg"
     ],
     "directories": {
       "buildResources": "build"
