@@ -17,7 +17,7 @@ function createWindow() {
 
     // and load the index.html of the app.
     const startUrl = process.env.ELECTRON_START_URL || url.format({
-        pathname: path.join(__dirname, '/../build/index.html'),
+        pathname: path.join(__dirname, '../build', 'index.html'),
         protocol: 'file:',
         slashes: true
     });
@@ -57,13 +57,6 @@ app.on('activate', function () {
     }
 });
 
-app.on('before-quit', () => {
-    db.close((err) => {
-        if (err) {
-        console.error('Error closing SQLite connection:', err);
-        }
-    });
-});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

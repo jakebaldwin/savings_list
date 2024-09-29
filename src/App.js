@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Item from './components/Item';
 import AddItemModal from './components/AddItemModal';
 import EditItemModal from './components/EditItemModal'; // Import the EditItemModal
+import { setItem, getItem } from './localStorage'; // Import local storage utility functions
 
 const App = () => {
   const [filter, setFilter] = useState('active');
-  const [activeItems, setActiveItems] = useState([
-    { id: 1, name: 'Item 1', amountSaved: 50, amountToSave: 100, imageUrl: 'https://via.placeholder.com/80' },
-    { id: 2, name: 'Item 2', amountSaved: 75, amountToSave: 200, imageUrl: 'https://via.placeholder.com/80' },
-  ]);
+  const [activeItems, setActiveItems] = useState([]);
   const [purchasedItems, setPurchasedItems] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null); // State to hold the current item being edited
+
+  // Load items from local storage when the component mounts
+  useEffect(() => {
+    const storedActiveItems = getItem('activeItems') || [];
+    const storedPurchasedItems = getItem('purchasedItems') || [];
+    setActiveItems(storedActiveItems);
+    setPurchasedItems(storedPurchasedItems);
+  }, []);
+
+  // Save items to local storage whenever active or purchased items change
+  useEffect(() => {
+    setItem('activeItems', activeItems);
+    setItem('purchasedItems', purchasedItems);
+  }, [activeItems, purchasedItems]);
 
   const itemsToShow = filter === 'active' ? activeItems : purchasedItems;
 
