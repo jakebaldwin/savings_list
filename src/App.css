@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: 'Comfortaa';
+  background-color: #f7f4f0; /* Cream background */
+}
+
+.app-container {
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Filter Styling */
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.filter-button.active {
+  background-color: #28b485;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-button:hover {
+  background-color: #23a06a;
+  color: white;
+}
+
+/* Item List */
+.item-list {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-container {
+  background-color: #fff8e7; /* Cream color for the row */
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.item-container:hover {
+  transform: translateY(-3px);
+}
+
+.item-image {
+  margin-right: 15px;
+}
+
+.item-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.item-details {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item-saved {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.item-menu {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s ease;
+}
+
+.item-menu:hover {
+  color: #28b485;
+}
+
+/* Add Button */
+.add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff8e7;
+  border: none;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #f4f1ec;
+}
